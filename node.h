@@ -3,13 +3,13 @@
 
 class node
 { private:
-    string name;
-    int num_G;
-    string type;
+    string wasteType;
+    double weight;
+    string binType;
     node *next; //private (LL.h can't access directly)
 
   public:
-   node(int,string,int);
+   node(string,double,string);
    void print();
    ~node();
      void set_next(node* x){next=x;}
@@ -18,19 +18,19 @@ class node
 };
 typedef node* nodePtr;
 
-node::node(string x,string t,int n){
-  name=x;
-  type=t;
-  num_G=n;
+node::node(string t,double w,string b){
+  wasteType=t;
+  weight=w;
+  binType=b;
   next=NULL;
 }
+
 void node::print(){
-    cout<<name<<" "<<type<<endl;
+    cout<<wasteType <<"weight : "<<weight<< " kg, Bin: " <<binType<<endl;
 }
 
 node::~node(){
-     cout<<"Deleting "<<name<<endl; 
+     cout<<"Deleting "<<wasteType<<" ( "<<weight<<" )"<<endl; 
 }
-
 
 #endif
