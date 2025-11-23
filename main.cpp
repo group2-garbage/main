@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
         double weight = atof(argv[i+1]);
         waste.add_waste(type,weight);
     }
-    waste .displaySummary();
+    waste.displaySummary();
 
     return 0;
 }

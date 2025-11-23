@@ -13,11 +13,10 @@ class node{
    node(string,double,string);
    void print();
    ~node();
-     void set_next(node* x){next=x;}
+    void set_next(node* x){next=x;}
     node * get_next(){return next;}
     string getBin(){return binType;}
     double get_weight(){return weight;}
-   
 };
 typedef node* nodePtr;
 
@@ -41,17 +40,13 @@ string getBin(string type) {
 
     if (type == "plastic" || type == "paper" || type == "metal" || type == "glass")
         return "Recycling";
-
-    if (type == "organic" || type == "food" || type == "fruit" || type == "vegetable")
+    else if (type == "organic" || type == "food" || type == "fruit" || type == "vegetable")
         return "Compost";
-
-    if (type == "battery" || type == "electronics" || type == "ewaste" || type == "e-waste")
+    else if (type == "battery" || type == "electronics" || type == "ewaste" || type == "e-waste")
         return "E-Waste";
-
-    if (type == "chemical" || type == "paint" || type == "toxic"|| type=="medical equipment")
+    else if (type == "chemical" || type == "paint" || type == "toxic"|| type =="oil"|| type =="medical")
         return "Hazardous";
-
-    return "General";
+    else return "General";
 }
 
 

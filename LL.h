@@ -31,7 +31,7 @@ void LL::add_waste(string t,double w){
    	temp->set_next(new node(t,w,b));
     //t->next=
   }
-  cout<<t<<" ("<<fixed<<setprecision(2)<<w<<" kg)"<<endl;
+  cout<<"Item : "<<t<<" ("<<fixed<<setprecision(2)<<w<<" kg)"<<endl;
   cout << "→ This waste goes into the " << b << " Bin"<<endl;
 }
 
