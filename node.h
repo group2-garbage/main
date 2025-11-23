@@ -1,5 +1,10 @@
 #ifndef NODE_H
 #define NODE_H
+
+#include <iostream>
+#include <string>
+#include <cctype>
+
 using namespace std;
 
 class node{ 
@@ -13,6 +18,8 @@ class node{
    node(string,double,string);
    void print();
    ~node();
+    string get_binType();
+    double get_weight();
      void set_next(node* x){next=x;}
     node * get_next(){return next;}
    
@@ -30,12 +37,21 @@ void node::print(){
     cout<<wasteType <<"weight : "<<weight<< " kg, Bin: " <<binType<<endl;
 }
 
+string node::get_binType(){
+    return binType;
+}
+
+double node::get_weight(){
+    return weight;
+}
+
+
 node::~node(){
      cout<<"Deleting "<<wasteType<<" ( "<<weight<<" )"<<endl; 
 }
 
-getBin(string type) {
-    for (auto &c : type) c = tolower(c);
+string getBin(string type) {
+    for (char &c : type) c = static_cast<char>(tolower(static_cast<unsigned char>(c)));
 
     if (type == "plastic" || type == "paper" || type == "metal" || type == "glass")
         return "Recycling";
