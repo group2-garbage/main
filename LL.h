@@ -8,7 +8,7 @@ class LL{
       int size;
   public:
       LL();
-      void insert_node(int,string);
+      void add_waste(string,double);
       void displaySummary();
      ~LL();
 
@@ -19,17 +19,19 @@ LL::LL(){
   size=0;
 }
 
-void LL::insert_node(int t,string w){
-  nodePtr t=hol; 
+void LL::add_waste(string t,double w){
+  nodePtr temp;
+  temp = hol; 
+  string b = getBin(type);
   if(hol==NULL) hol=new node(t,w,b); //create the first node or use if(hol=NULL)
   else{    	
     //search for location(last node)
-   	while(t->get_next()!= NULL) t=t->get_next();
+   	while(temp->get_next()!= NULL) temp=temp->get_next();
     //t->next --> private
-   	t->set_next(new node(t,w,b));
+   	temp->set_next(new node(t,w,b));
     //t->next=
   }
-  cout << "→ This waste goes into the **" << bin << " Bin**\n";
+  cout << "→ This waste goes into the " << binType << " Bin\n";
 }
 
 LL::~LL(){
@@ -40,7 +42,7 @@ LL::~LL(){
             delete t;  // destructor prints message
             t=hol;
         }
-        size=0
+        size=0;
 } 
 
 void LL::displaySummary() {
@@ -50,38 +52,38 @@ void LL::displaySummary() {
         double weightRecycling = 0, weightCompost = 0, weightEWaste = 0,
                weightHazardous = 0, weightGeneral = 0;
 
-        Node* t = hol;
+        nodePtr temp = hol;
 
-        while (t != NULL) {
-            if (t->binType == "Recycling") {
+        while (temp != NULL) {
+            if (temp->binType == "Recycling") {
                 countRecycling++;
-                weightRecycling += t->weight;
+                weightRecycling += temp->weight;
             }
-            else if (t->binType == "Compost") {
+            else if (temp->binType == "Compost") {
                 countCompost++;
-                weightCompost += t->weight;
+                weightCompost += temp->weight;
             }
-            else if (t->binType == "E-Waste") {
+            else if (temp->binType == "E-Waste") {
                 countEWaste++;
-                weightEWaste += t->weight;
+                weightEWaste += temp->weight;
             }
-            else if (t->binType == "Hazardous") {
+            else if (temp->binType == "Hazardous") {
                 countHazardous++;
-                weightHazardous += t->weight;
+                weightHazardous += temp->weight;
             }
             else {
                 countGeneral++;
-                weightGeneral += t->weight;
+                weightGeneral += temp->weight;
             }
 
-            t = t->get_next();
+            temp = temp->get_next();
         }
 
         cout << "========== TOTAL WASTE SUMMARY =========="<<endl;
-        cout << "Recycling Bin : " << countRecycling << " items, " << weightRecycling << " kg"<<<endl;
-        cout << "Compost Bin   : " << countCompost   << " items, " << weightCompost   << " kg"<<<endl;
-        cout << "E-Waste Bin   : " << countEWaste    << " items, " << weightEWaste    << " kg"<<<endl;
-        cout << "Hazardous Bin : " << countHazardous << " items, " << weightHazardous << " kg"<<<endl;
-        cout << "General Bin   : " << countGeneral   << " items, " << weightGeneral   << " kg"<<<endl;
+        cout << "Recycling Bin : " << countRecycling << " items, " << weightRecycling << " kg"<<endl;
+        cout << "Compost Bin   : " << countCompost   << " items, " << weightCompost   << " kg"<<endl;
+        cout << "E-Waste Bin   : " << countEWaste    << " items, " << weightEWaste    << " kg"<<endl;
+        cout << "Hazardous Bin : " << countHazardous << " items, " << weightHazardous << " kg"<<endl;
+        cout << "General Bin   : " << countGeneral   << " items, " << weightGeneral   << " kg"<<endl;
         cout << "=========================================="<<endl;
 }
