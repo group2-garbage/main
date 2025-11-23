@@ -22,7 +22,7 @@ LL::LL(){
 void LL::add_waste(string t,double w){
   nodePtr temp;
   temp = hol; 
-  string b = getBin(type);
+  string b = getBin(t);
   if(hol==NULL) hol=new node(t,w,b); //create the first node or use if(hol=NULL)
   else{    	
     //search for location(last node)
@@ -31,7 +31,7 @@ void LL::add_waste(string t,double w){
    	temp->set_next(new node(t,w,b));
     //t->next=
   }
-  cout << "→ This waste goes into the " << binType << " Bin\n";
+  cout << "→ This waste goes into the " << b << " Bin"<<endl;
 }
 
 LL::~LL(){
@@ -55,25 +55,25 @@ void LL::displaySummary() {
         nodePtr temp = hol;
 
         while (temp != NULL) {
-            if (temp->binType == "Recycling") {
+            if (temp->getBin() == "Recycling") {
                 countRecycling++;
-                weightRecycling += temp->weight;
+                weightRecycling += temp->get_weight();
             }
-            else if (temp->binType == "Compost") {
+            else if (temp->getBin() == "Compost") {
                 countCompost++;
-                weightCompost += temp->weight;
+                weightCompost += temp->get_weight();
             }
-            else if (temp->binType == "E-Waste") {
+            else if (temp->getBin() == "E-Waste") {
                 countEWaste++;
-                weightEWaste += temp->weight;
+                weightEWaste += temp->get_weight();
             }
-            else if (temp->binType == "Hazardous") {
+            else if (temp->getBin() == "Hazardous") {
                 countHazardous++;
-                weightHazardous += temp->weight;
+                weightHazardous += temp->get_weight();
             }
             else {
                 countGeneral++;
-                weightGeneral += temp->weight;
+                weightGeneral += temp->get_weight();
             }
 
             temp = temp->get_next();

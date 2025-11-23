@@ -15,6 +15,8 @@ class node{
    ~node();
      void set_next(node* x){next=x;}
     node * get_next(){return next;}
+    string getBin(){return binType;}
+    double get_weight(){return weight;}
    
 };
 typedef node* nodePtr;
@@ -34,8 +36,8 @@ node::~node(){
      cout<<"Deleting "<<wasteType<<" ( "<<weight<<" )"<<endl; 
 }
 
-getBin(string type) {
-    for (auto &c : type) c = tolower(c);
+string getBin(string type) {
+    for (char &c : type) c = static_cast<char>(tolower(static_cast<unsigned char>(c)));
 
     if (type == "plastic" || type == "paper" || type == "metal" || type == "glass")
         return "Recycling";
@@ -51,5 +53,6 @@ getBin(string type) {
 
     return "General";
 }
+
 
 #endif
