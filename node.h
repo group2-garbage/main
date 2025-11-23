@@ -33,7 +33,7 @@ void node::print(){
 }
 
 node::~node(){
-     cout<<"Deleting "<<wasteType<<" ( "<<weight<<" )"<<endl; 
+     cout<<"Deleting "<<wasteType<<setw(2)<<setfill(' ')<<"("<<weight<<")"<<endl; 
 }
 
 string getBin(string type) {

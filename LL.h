@@ -31,11 +31,12 @@ void LL::add_waste(string t,double w){
    	temp->set_next(new node(t,w,b));
     //t->next=
   }
+  cout<<t<<" ("<<fixed<<setprecision(2)<<w<<" kg)"<<endl;
   cout << "→ This waste goes into the " << b << " Bin"<<endl;
 }
 
 LL::~LL(){
-  cout << "LinkedList Deconstruction Started"<<endl;
+  cout << "Deconstruction Started"<<endl;
     nodePtr t = hol;
         while (t != NULL) {
             hol = hol->get_next();
@@ -79,11 +80,11 @@ void LL::displaySummary() {
             temp = temp->get_next();
         }
 
-        cout << "========== TOTAL WASTE SUMMARY =========="<<endl;
-        cout << "Recycling Bin : " << countRecycling << " items, " << weightRecycling << " kg"<<endl;
-        cout << "Compost Bin   : " << countCompost   << " items, " << weightCompost   << " kg"<<endl;
-        cout << "E-Waste Bin   : " << countEWaste    << " items, " << weightEWaste    << " kg"<<endl;
-        cout << "Hazardous Bin : " << countHazardous << " items, " << weightHazardous << " kg"<<endl;
-        cout << "General Bin   : " << countGeneral   << " items, " << weightGeneral   << " kg"<<endl;
-        cout << "=========================================="<<endl;
+        cout <<endl<< "========== TOTAL WASTE SUMMARY =========="<<endl;
+        cout << "Recycling Bin : " << countRecycling << " items, " <<fixed<<setprecision(2)<< weightRecycling << " kg"<<endl;
+        cout << "Compost Bin   : " << countCompost   << " items, " <<fixed<<setprecision(2)<< weightCompost   << " kg"<<endl;
+        cout << "E-Waste Bin   : " << countEWaste    << " items, " <<fixed<<setprecision(2)<< weightEWaste    << " kg"<<endl;
+        cout << "Hazardous Bin : " << countHazardous << " items, " <<fixed<<setprecision(2)<< weightHazardous << " kg"<<endl;
+        cout << "General Bin   : " << countGeneral   << " items, " <<fixed<<setprecision(2)<< weightGeneral   << " kg"<<endl;
+        cout << "=========================================="<<endl<<endl;
 }
