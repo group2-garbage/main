@@ -3,7 +3,7 @@
 
 class node
 { private:
-    int id_G;
+    string name;
     int num_G;
     string type;
     node *next; //private (LL.h can't access directly)
@@ -18,18 +18,18 @@ class node
 };
 typedef node* nodePtr;
 
-node::node(int id_G ,string type,int num_G){
-  id_G=x;
+node::node(string x,string t,int n){
+  name=x;
   type=t;
   num_G=n;
   next=NULL;
 }
 void node::print(){
-    cout<<id<<" "<<id_G<<endl;
+    cout<<name<<" "<<type<<endl;
 }
 
 node::~node(){
-     cout<<"Deleting "<<id_G<<endl;
+     cout<<"Deleting "<<name<<endl; 
 }
 
 
