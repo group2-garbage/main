@@ -24,10 +24,10 @@ int main(int argc, char* argv[]) {
     }
 
     // 2) Interactive Menu
-    cout << "\n===== Waste Management System =====\n";
+    cout <<endl<< "===== Waste Management System ====="<<endl;
     do {
         instruction();
-        cout << "\nYour choice: ";
+        cout <<endl<< "Your choice: ";
         cin >> choice;
 
         switch (choice) {
@@ -49,8 +49,8 @@ int main(int argc, char* argv[]) {
                 break;
 
             case 3: {
-                cout << "\nWhich bin do you want to throw?\n";
-                cout << "(recycling / compost / e-waste / hazardous / general)\n";
+                cout <<endl<< "Which bin do you want to throw?"<<endl;
+                cout << "(recycling / compost / e-waste / hazardous / general)"<<endl;
                 cout << "Enter bin name: ";
 
                 string binInput; // user input for bin name
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
                 string binName = normalizeBin(binInput); // normalize user input
 
                 if (binName == "") {
-                    cout << "❌ Unknown bin. Please try again.\n";
+                    cout << "❌ Unknown bin. Please try again."<<endl;
                 } else {
                     waste.throwBin(binName); // will clear nodes and reset weight for that bin
                 }
@@ -71,21 +71,22 @@ int main(int argc, char* argv[]) {
                 break;
 
             default:
-                cout << "Invalid choice. Please try again.\n";
+                cout << "Invalid choice. Please try again."<<endl;
+                break;
         }
     } while (choice != 4);
 
-    cout << "Exiting Waste Management System...\n";
+    cout << "Exiting Waste Management System..."<<endl;
     return 0;
 }
 
 // ---- Menu function ----
 void instruction(void) {
-    cout<<"\nMenu Options:\n";
-    cout << "1. Add waste\n";
-    cout << "2. Display summary\n";
-    cout << "3. Throw waste manually\n";
-    cout << "4. Exit\n";
+    cout<<endl<<"Menu Options:"<<endl;
+    cout << "1. Add waste"<<endl;
+    cout << "2. Display summary"<<endl;
+    cout << "3. Throw waste manually"<<endl;
+    cout << "4. Exit"<<endl;
 }
 
 // ---- Normalize bin name so user can type flexibly ----

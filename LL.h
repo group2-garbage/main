@@ -64,6 +64,12 @@ LL::LL(){
 }
 
 void LL::add_waste(string t, double w) {
+     // Validate weight input: reject non-positive weights
+    if (w <= 0) {
+        cout <<endl<< "NO!!❌ Invalid weight: " << fixed << setprecision(2) << w
+             << " kg. Weight must be > 0."<<endl<<endl;
+        return;
+    }
     string b = getBin(t);   // decide bin: Recycling, Compost, etc.
 
     // 1) Choose which totalWeight & item count belong to this bin
@@ -88,15 +94,15 @@ void LL::add_waste(string t, double w) {
 
     // 2) PREDICT → will adding w exceed the bin limit?
     if (*currentWeight + w > MAX) {
-        cout << "\n⚠️ Adding " << fixed << setprecision(2) << w
+        cout <<endl<< " Adding " << fixed << setprecision(2) << w
              << " kg to the " << b << " Bin will exceed the "
-             << MAX << " kg limit.\n";
-        cout << "Auto-throwing waste activate...\n";
+             << MAX << " kg limit."<<endl;
+        cout << "Auto-throwing waste activate..."<<endl;
 
         // auto-throw this bin (clear items + reset weight)
         throwBin(b);
 
-        cout << "Adding new trash is now available for the " << b << " Bin.\n\n";
+        cout << "Adding new trash is now available for the " << b << " Bin."<<endl<<endl;
         // after throwBin, *currentWeight is now 0
     }
 
@@ -127,8 +133,8 @@ void LL::add_waste(string t, double w) {
     size++;
 
     // 5) PRINT INFO FOR THIS ITEM
-    cout << "Item : " << t << " (" << fixed << setprecision(2) << w << " kg)\n";
-    cout << "→ This waste goes into the " << b << " Bin\n\n";
+    cout << "Item : " << t << " (" << fixed << setprecision(2) << w << " kg)"<<endl;
+    cout << "→ This waste goes into the " << b << " Bin"<<endl<<endl;
 }
 
 LL::~LL(){
@@ -157,11 +163,11 @@ void LL::displaySummary() {
     cout << "==========================================" << endl;
 
     cout << endl << "============ BIN THROW REPORT ============" << endl;
-    cout << "Recycling Bin   threw : " << countThrowRecycling  << " times\n";
-    cout << "Compost Bin     threw : " << countThrowCompost    << " times\n";
-    cout << "E-Waste Bin     threw : " << countThrowEWaste     << " times\n";
-    cout << "Hazardous Bin   threw : " << countThrowHazardous  << " times\n";
-    cout << "General Bin     threw : " << countThrowGeneral    << " times\n";
+    cout << "Recycling Bin   threw : " << countThrowRecycling  << " times"<<endl;
+    cout << "Compost Bin     threw : " << countThrowCompost    << " times"<<endl;
+    cout << "E-Waste Bin     threw : " << countThrowEWaste     << " times"<<endl;
+    cout << "Hazardous Bin   threw : " << countThrowHazardous  << " times"<<endl;
+    cout << "General Bin     threw : " << countThrowGeneral    << " times"<<endl;
     cout << "==========================================" << endl << endl;
 }
 
@@ -177,10 +183,10 @@ void LL::throwBin(const string& binName) {
     else if (binName == "General")     currentWeight = totalWeightGeneral;
 
     if (currentWeight < MIN) {
-        cout << "\n❌ Cannot throw " << binName << " Bin.\n";
+        cout <<endl<< "❌ Cannot throw " << binName << " Bin."<<endl;
         cout << "   It has only " << fixed << setprecision(2) << currentWeight 
-             << " kg,\n   below the minimum " << MIN << " kg required.\n";
-        cout << "   Please add more waste before throwing this bin.\n\n";
+             << " kg,"<<endl<< "below the minimum " << MIN << " kg required."<<endl;
+        cout << "   Please add more waste before throwing this bin."<<endl;
         return; // stop here, no deletion
     }
 
@@ -234,8 +240,8 @@ void LL::throwBin(const string& binName) {
         countThrowGeneral++;
     }
 
-    cout << "✅ All waste in " << binName << " Bin has been thrown out.\n";
-    cout << "Now the " << binName << " bin is empty (0 kg).\n\n";
+    cout << "✅ All waste in " << binName << " Bin has been thrown out."<<endl;
+    cout << "Now the " << binName << " bin is empty (0 kg)."<<endl<<endl;
 }
 
 #endif
